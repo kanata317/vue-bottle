@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <div>
+                <input type="text" v-model="searchPersonName" />
+                <input v-on:click="writeCookie" type="button" value="履歴に保存" />
+            </div>
+            <div>
+                <span>履歴</span>
+                <ul>
+                    <li v-for="h in searchHistory">
+                        <a href="#" v-on:click="selectHistory(h)">{{h}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div v-show="hasData">
+            <div v-for="p in filterPerson" class="personSchedule">
+                <div>{{p.name}}</div>
+                <div>
+                    <li v-for="s in p.schedule">{{s.time}}：{{s.name}}</li>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
